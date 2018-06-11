@@ -5,7 +5,7 @@
 			<div class="col search d-none d-md-flex align-items-center ">
 				<div class="search-group ml-5">
 					<i class="fas fa-search text-white"></i>
-					<input type="search" placeholder="Explore your own activities">
+					<input type="search" placeholder="Explore your own activities. (Key Enter)" #search (keyup.enter)="onSearchEnter(search.value);search.value = ''">
 				</div>
 			</div>
 		</div>
@@ -18,11 +18,11 @@
 			<div class="filter-content">
 				<div class="filter-box py-4 px-4">
 					<div class="filter-box-title mb-3">Location</div>
-					<select class="custom-select">
-						<option selected>select menu</option>
-						<option value="1">One</option>
-						<option value="2">Two</option>
-						<option value="3">Three</option>
+					<select class="custom-select" #selectZone>
+						<option value="" selected>select menu</option>
+						<option value="Koahsiung">Koahsiung</option>
+						<option value="Taipei">Taipei</option>
+						<option value="Tainan">Tainan</option>
 					</select>
 				</div>
 				<div class="filter-box py-4 px-4">
@@ -42,11 +42,11 @@
 				</div>
 				<div class="filter-box py-4 px-4">
 					<div class="filter-box-title mb-3">Categories</div>
-					<label class="container">All
-						<input type="checkbox">
+					<label class="container" *ngFor="let item of categoriesTag; let i = index;">{{item.name}}
+						<input type="checkbox" (change)="toggleEditable(i)">
 						<span class="checkmark"></span>
 					</label>
-					<label class="container">Entertainment
+					<!-- <label class="container">Entertainment
 						<input type="checkbox">
 						<span class="checkmark"></span>
 					</label>
@@ -61,7 +61,10 @@
 					<label class="container">Outdoors
 						<input type="checkbox">
 						<span class="checkmark"></span>
-					</label>
+					</label> -->
+				</div>
+				<div class="filter-fotter p-3 text-right">
+					<div class="btn btn-primary" (click)="addFilter(selectZone);selectZone.value=''">Filter</div>
 				</div>
 			</div>
 
@@ -70,14 +73,8 @@
 			<div class="filter-info mx-3 mx-md-0">
 				<h3 class="mt-4">Showing
 					<span class="text-primary">15</span> results by…</h3>
-				<span class="filter-tag">Koahsiung
-					<i class="far fa-times-circle ml-2"></i>
-				</span>
-				<span class="filter-tag">Taipei
-					<i class="far fa-times-circle ml-2"></i>
-				</span>
-				<span class="filter-tag">Tainan
-					<i class="far fa-times-circle ml-2"></i>
+				<span class="filter-tag mr-2" *ngFor="let item of searchTag; let i = index;">{{item}}
+					<i class="far fa-times-circle ml-2" (click)="deleteSearchTag(i)"></i>
 				</span>
 			</div>
 			<div class="view-list mx-3 mt-4 mx-md-0 mr-md-3 d-flex flex-column flex-lg-row" *ngFor="let item of data" (click)="showDetail()">
