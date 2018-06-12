@@ -57,7 +57,12 @@ export class AppComponent {
   }
 
   toggleEditable(index) {
-    this.categoriesTag[index].checked = 'true';
+    if(this.categoriesTag[index].checked == 'true') {
+      this.categoriesTag[index].checked = 'false';
+    }else{
+      this.categoriesTag[index].checked = 'true';
+    }
+    
   }
 
   showSearchBar(){
