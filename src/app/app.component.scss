@@ -6,7 +6,7 @@ header {
 
 .logo {
     width: 300px;
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 800;
     color: white;
     text-align: center;
@@ -215,13 +215,12 @@ header {
 
 .info-tag {
     display: inline-block;
-    background: #D7D7D7;
+    background: rgb(187, 187, 187);
     line-height: 24px;
     font-size: 16px;
     color: #FFFFFF;
     padding: 0 15px;
     border-radius: 100px;
-    font-style: italic;
     font-weight: 100;
     margin: 0 3px;
 }
@@ -244,4 +243,11 @@ header {
 .page-link:hover {
     background-color: #9013FE;
     color: white;
+}
+
+
+.detail-bg {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
 }
