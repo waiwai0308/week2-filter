@@ -48,7 +48,7 @@ export class AppComponent implements OnInit{
   singleData;
 
   constructor(private http: HttpClient) {
-    this.http.get('https://waiwai0308.github.io/week2-filter/assets/data.json').subscribe(data => {
+    this.http.get('https://waiwai0308.github.io/week2-filter/src/assets/data.json').subscribe(data => {
       this.allFoodData = data;
       this.foodData =  this.allFoodData.slice(0,50);
     });
