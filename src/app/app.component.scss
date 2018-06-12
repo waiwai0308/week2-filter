@@ -1,5 +1,4 @@
 @import "../variables";
-
 header {
     height: 92px;
     background-color: #7828B4;
@@ -13,9 +12,18 @@ header {
     text-align: center;
     line-height: 92px;
 }
+
+@media (max-width: 992px) {
+    .logo {
+        width: auto;
+        margin-left: 5px;
+    }
+}
+
 .search {
     height: 92px;
 }
+
 .search-group {
     font-size: 20px;
     width: 100%;
@@ -28,8 +36,34 @@ header {
         color: white;
         border-bottom: 1px solid #CCCCCC;
         &::placeholder {
-            color: rgba(white,.7);
-            font-style:italic;
+            color: rgba(white, .7);
+            font-style: italic;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.search-bar {
+    font-size: 20px;
+    position: relative;
+    background: #EBEBEB;
+    box-shadow: 0 5px 10px 0 #D7D7D7;
+    i {
+        position: absolute;
+        left: 25px;
+    }
+    input {
+        width: 100%;
+        padding: 5px 5px 5px 35px;
+        background: transparent;
+        border: 0px solid #CCCCCC;
+        color: black;
+        border-bottom: 1px solid black;
+        &::placeholder {
+            color: rgba(black, .7);
+            font-style: italic;
         }
         &:focus {
             outline: none;
@@ -55,12 +89,11 @@ header {
     }
     input[type='date'] {
         padding: 5px 10px;
-        height: 40px;  
+        height: 40px;
         border: 0px;
         border-radius: 0;
         background-color: #fff;
     }
-
     .container {
         display: block;
         position: relative;
@@ -74,14 +107,12 @@ header {
         -ms-user-select: none;
         user-select: none;
     }
-    
     /* Hide the browser's default checkbox */
     .container input {
         position: absolute;
         opacity: 0;
         cursor: pointer;
     }
-    
     /* Create a custom checkbox */
     .checkmark {
         position: absolute;
@@ -91,29 +122,24 @@ header {
         width: 16px;
         background-color: white;
     }
-    
     /* On mouse-over, add a grey background color */
-    .container:hover input ~ .checkmark {
+    .container:hover input~.checkmark {
         background-color: white;
     }
-    
     /* When the checkbox is checked, add a blue background */
-    .container input:checked ~ .checkmark {
+    .container input:checked~.checkmark {
         background-color: $primary;
     }
-    
     /* Create the checkmark/indicator (hidden when not checked) */
     .checkmark:after {
         content: "";
         position: absolute;
         display: none;
     }
-    
     /* Show the checkmark when checked */
-    .container input:checked ~ .checkmark:after {
+    .container input:checked~.checkmark:after {
         display: block;
     }
-    
     /* Style the checkmark/indicator */
     .container .checkmark:after {
         left: 6px;
@@ -144,9 +170,9 @@ header {
     border-radius: 100px;
     margin-bottom: 5px;
     line-height: 35px;
-    color:  $primary;
+    color: $primary;
     border: 1px solid #9013FE;
-    font-style:italic;
+    font-style: italic;
     font-weight: 100;
     padding: 0 15px;
     cursor: pointer;
@@ -156,18 +182,20 @@ header {
         color: white;
     }
 }
+
 .view-list {
     background: #FFFFFF;
     transition: all .3s;
-    &:hover{
+    &:hover {
         box-shadow: 0 0 20px 2px #afafaf;
     }
 }
-.view-img{
+
+.view-img {
     width: 200px;
     height: 200px;
-    background-size:cover;
-    background-position:center;
+    background-size: cover;
+    background-position: center;
 }
 
 .view-info {
@@ -175,7 +203,7 @@ header {
 }
 
 @media (max-width: 991px) {
-    .view-img{
+    .view-img {
         width: 100%;
     }
     .view-info {
@@ -183,9 +211,8 @@ header {
     }
 }
 
-.info-content {
+.info-content {}
 
-}
 .info-tag {
     display: inline-block;
     background: #D7D7D7;
@@ -194,7 +221,7 @@ header {
     color: #FFFFFF;
     padding: 0 15px;
     border-radius: 100px;
-    font-style:italic;
+    font-style: italic;
     font-weight: 100;
     margin: 0 3px;
 }
@@ -208,9 +235,13 @@ header {
 
 .breadcrumb {
     background: #EBEBEB;
-
 }
 
 .view-deatil {
     background-color: #fff;
+}
+
+.page-link:hover {
+    background-color: #9013FE;
+    color: white;
 }

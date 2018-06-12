@@ -20,6 +20,7 @@ export class AppComponent {
   ];
 
   showAll = true;
+  showSearch = false;
 
   showDetail(){
     this.showAll = !this.showAll;
@@ -57,6 +58,10 @@ export class AppComponent {
 
   toggleEditable(index) {
     this.categoriesTag[index].checked = 'true';
+  }
+
+  showSearchBar(){
+    this.showSearch = !this.showSearch;
   }
 
 }
