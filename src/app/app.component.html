@@ -28,11 +28,9 @@
             <div class="filter-content">
                 <div class="filter-box py-4 px-4">
                     <div class="filter-box-title mb-3">Location</div>
-                    <select class="custom-select" #selectZone>
+                    <select class="custom-select" (change)="selectZone($event.target.value)">
                         <option value="" selected>select menu</option>
-                        <option value="Koahsiung">Koahsiung</option>
-                        <option value="Taipei">Taipei</option>
-                        <option value="Tainan">Tainan</option>
+                        <option [value]="item.Zone" *ngFor="let item of area">{{item.Zone}}</option>
                     </select>
                 </div>
                 <!-- <div class="filter-box py-4 px-4">
@@ -57,16 +55,13 @@
                         <span class="checkmark"></span>
                     </label>
                 </div>
-                <div class="filter-fotter p-3 text-right">
-                    <div class="btn btn-primary" (click)="addFilter(selectZone);selectZone.value=''">Filter</div>
-                </div>
             </div>
 
         </section>
         <section class="col p-0 mx-0 mx-md-3 mx-lg-0" *ngIf="showAll" [@flyInOut]>
             <div class="filter-info mx-3 mx-md-0">
                 <h3 class="mt-4">Showing
-                    <span class="text-primary" *ngIf="foodData">{{foodData.length}}</span> results by…</h3>
+                    <span class="text-primary" *ngIf="foodData">{{allFoodData.length}}</span> results by…</h3>
                 <span class="filter-tag mr-2" *ngFor="let item of searchTag; let i = index;">{{item}}
                     <i class="far fa-times-circle ml-2" (click)="deleteSearchTag(i)"></i>
                 </span>
@@ -77,7 +72,7 @@
                     <h4 class="text-primary font-weight-bold my-2">{{item.Name}}</h4>
                     <p class="info-content">{{ (item.Description.length>60)? (item.Description | slice:0:60)+'..':(item.Description) }}</p>
                     <div class="info-main mb-2">
-                        <span class="font-weight-bold mr-3">Ethan Foster</span>
+                        <span class="font-weight-bold mr-3">Categories</span>
 						<span class="info-tag" *ngIf="item.Class==01">異國料理</span>
 						<span class="info-tag" *ngIf="item.Class==02">火烤料理</span>
 						<span class="info-tag" *ngIf="item.Class==03">中式美食</span>
@@ -101,22 +96,16 @@
             <nav aria-label="Page navigation example">
                 <ul class="pagination mt-3 mx-3 mx-md-0 justify-content-end">
                     <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
+                        <a class="page-link" href="#" aria-label="Previous" (click)="changePage('pre')">
                             <span aria-hidden="true">&laquo;</span>
                             <span class="sr-only">Previous</span>
                         </a>
                     </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">1</a>
+                    <li class="page-item"  [ngClass]="pagination.nowPage == item ? 'active':''" *ngFor="let item of pagination.totalPage" (click)="changePage(item)">
+                        <a class="page-link" href="#">{{item}}</a>
                     </li>
                     <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
+                        <a class="page-link" href="#" aria-label="Next" (click)="changePage('next')">
                             <span aria-hidden="true">&raquo;</span>
                             <span class="sr-only">Next</span>
                         </a>
